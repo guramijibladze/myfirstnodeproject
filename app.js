@@ -1,3 +1,4 @@
+require('dotenv').config({ path: `${process.cwd()}/.env` });
 const express = require('express')
 const authRouter = require('./route/authRoute')
 const router = require('./route/authRoute')
@@ -14,6 +15,8 @@ app.get('/', (req, res) => {
 //all route 
 app.use('/api/v1/auth', router)
 
-app.listen(3000, () => {
-    console.log('Server up and runing!!!')
+const PORT = process.env.APP_PORT || 4000;
+
+app.listen(PORT, () => {
+    console.log('Server up and runing!!!', PORT)
 })
